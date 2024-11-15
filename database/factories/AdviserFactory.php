@@ -2,14 +2,15 @@
 
 namespace Database\Factories;
 
+use App\Models\Adviser;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ * @extends Factory<Adviser>
  */
-class UserFactory extends Factory
+class AdviserFactory extends Factory
 {
     /**
      * The current password being used by the factory.
