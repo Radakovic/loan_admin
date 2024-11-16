@@ -35,4 +35,10 @@ class ClientController extends Controller
 
         return redirect('/clients');
     }
+
+    public function destroy(Client $client): RedirectResponse
+    {
+        $client->delete();
+        return redirect('/clients');
+    }
 }
