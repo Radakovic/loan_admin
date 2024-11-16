@@ -24,6 +24,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/clients/{client}', [ClientController::class, 'destroy'])->name('clients.destroy');
 
     Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+    Route::get('/products/export', [ProductController::class, 'exportCsv'])->name('products.export');
 });
 
 require __DIR__.'/auth.php';

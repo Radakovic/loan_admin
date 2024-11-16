@@ -15,7 +15,7 @@
             </td>
             <td class="border border-slate-700 px-4 py-2 text-gray-800 dark:text-gray-200">{{ $product->type }}</td>
             <td class="border border-slate-700 px-4 py-2 text-gray-800 dark:text-gray-200">{{ $product->productValue }}</td>
-            <td class="border border-slate-700 px-4 py-2 text-gray-800 dark:text-gray-200">{{ $product->created_at }}</td>
+            <td class="border border-slate-700 px-4 py-2 text-gray-800 dark:text-gray-200">{{ $product->created_at->format('Y-m-d') }}</td>
         </tr>
     @endforeach
     </tbody>

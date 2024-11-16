@@ -18,7 +18,7 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'created_at' => fake()->dateTimeBetween('-3 months'),
         ];
     }
 }

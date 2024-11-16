@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use App\Enum\ProductTypeEnum;
 use App\Models\Adviser;
 use App\Models\Client;
+use App\Models\Product;
+use Database\Factories\ProductFactory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Collection;
 
@@ -56,12 +58,21 @@ class ClientSeeder extends Seeder
             $cashLoanAmount = random_int(100000, 1000000);
         }
 
-        $client->products()->create([
+        Product::factory()->create([
             'type' => $loanType,
             'adviser_id' => $advisers->random()->id,
+            'client_id' => $client->id,
             'property_value' => $propertyValue,
             'down_payment_amount' => $downPaymentAmount,
             'cash_loan_amount' => $cashLoanAmount,
         ]);
+//
+//        $client->products()->create([
+//            'type' => $loanType,
+//            'adviser_id' => $advisers->random()->id,
+//            'property_value' => $propertyValue,
+//            'down_payment_amount' => $downPaymentAmount,
+//            'cash_loan_amount' => $cashLoanAmount,
+//        ]);
     }
 }

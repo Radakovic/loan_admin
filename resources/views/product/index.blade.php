@@ -10,7 +10,7 @@
             </div>
             <div class="flex">
                 <div class="shrink-0 flex items-center">
-                    <x-dark-link-button route="{{ route('clients.create') }}" text="Export to CSV"></x-dark-link-button>
+                    <x-dark-link-button route="{{ route('products.export') }}" text="Export to CSV"></x-dark-link-button>
                 </div>
             </div>
         </div>
