@@ -1,6 +1,19 @@
 <x-app-layout>
     <x-slot name="header">
-        @include('client.partials.client-list-header')
+        <div class="flex justify-between">
+            <div class="flex">
+                <div class="shrink-0 flex items-center">
+                    <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                        {{ __('Clients list') }}
+                    </h2>
+                </div>
+            </div>
+            <div class="flex">
+                <div class="shrink-0 flex items-center">
+                    <x-dark-link-button route="{{ route('clients.create') }}" text="Create client"></x-dark-link-button>
+                </div>
+            </div>
+        </div>
     </x-slot>
 
     <div class="py-12">

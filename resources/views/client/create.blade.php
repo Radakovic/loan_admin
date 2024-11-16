@@ -10,12 +10,7 @@
             </div>
             <div class="flex">
                 <div class="shrink-0 flex items-center">
-                    <a
-                            href="{{ route('clients.index') }}"
-                            class="rounded-md px-3 py-2 dark:bg-gray-700 dark:hover:bg-gray-300 mr-2 text-gray-800 dark:text-gray-200"
-                    >
-                        {{ __('Go back to clients') }}
-                    </a>
+                    <x-dark-link-button route="{{ route('clients.index') }}" text="Go back to clients"></x-dark-link-button>
                 </div>
             </div>
         </div>
@@ -52,9 +47,9 @@
                     </div>
 
                     <div class="flex items-center justify-end mt-4">
-                        <x-primary-button class="ms-4">
+                        <x-danger-button class="ms-4">
                             {{ __('Save') }}
-                        </x-primary-button>
+                        </x-danger-button>
                     </div>
                 </form>
             </div>
