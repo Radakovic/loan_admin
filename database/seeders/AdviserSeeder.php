@@ -13,11 +13,11 @@ class AdviserSeeder extends Seeder
      */
     public function run(): void
     {
-        Adviser::factory(10)->create();
-//        Adviser::factory()->create(function (): array {
-//            return [
-//                'email' => 'adviser@example.com',
-//            ];
-//        });
+        Adviser::factory(4)->create();
+        Adviser::factory()->create(function (): array {
+            return [
+                'email' => 'adviser@example.com',
+            ];
+        });
     }
 }
