@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use App\Enum\ProductTypeEnum;
 use Database\Factories\ProductFactory;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Number;
 use Ramsey\Uuid\Uuid;
 
 class Product extends Model
@@ -47,5 +49,16 @@ class Product extends Model
     public function client(): BelongsTo
     {
         return $this->belongsTo(Client::class);
+    }
+
+    public function getProductValueAttribute(): string
+    {
+        if ($this->type === ProductTypeEnum::CASH_LOAN->value) {
+            $productValue = round($this->cash_loan_amount / 100);
+        } else {
+            $productValue = round(($this->property_value - $this->down_payment_amount) / 100);
+        }
+
+        return Number::currency($productValue, 'EUR');
     }
 }

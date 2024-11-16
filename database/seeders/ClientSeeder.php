@@ -20,7 +20,7 @@ class ClientSeeder extends Seeder
      */
     public function run(): void
     {
-        Client::factory(30)->create();
+        Client::factory(50)->create();
 
         $advisers = Adviser::all();
         $clients = Client::all();
@@ -49,11 +49,11 @@ class ClientSeeder extends Seeder
         $downPaymentAmount = null;
 
         if ($loanType === ProductTypeEnum::HOME_LOAN->value) {
-            $propertyValue = random_int(100000, 1000000);
+            $propertyValue = random_int(1000000, 10000000);
             $downPaymentAmount = round($propertyValue / 10);
         }
         if ($loanType === ProductTypeEnum::CASH_LOAN->value) {
-            $cashLoanAmount = random_int(1000, 10000);
+            $cashLoanAmount = random_int(100000, 1000000);
         }
 
         $client->products()->create([
