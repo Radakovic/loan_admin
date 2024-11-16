@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enum\ProductTypeEnum;
 use Database\Factories\ClientFactory;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -34,24 +35,24 @@ class Client extends Model
     }
 
     /**
-     * Get all {@see Loan} for current {@see Client}
+     * Get all {@see Product} for current {@see Client}
      */
-    public function loans(): HasMany
+    public function products(): HasMany
     {
-        return $this->hasMany(Loan::class);
+        return $this->hasMany(Product::class);
     }
     /**
-     * Get only CASH {@see Loan} for current {@see Client}
+     * Get only CASH {@see Product} for current {@see Client}
      */
-    public function cashLoan(): HasOne
+    public function cashLoanProduct(): HasOne
     {
-        return $this->hasOne(Loan::class)->where('type', 'CASH');
+        return $this->hasOne(Product::class)->where('type', ProductTypeEnum::CASH_LOAN->value);
     }
     /**
-     * Get only HOME {@see Loan} for current {@see Client}
+     * Get only HOME {@see Product} for current {@see Client}
      */
-    public function homeLoan(): HasOne
+    public function homeLoanProduct(): HasOne
     {
-        return $this->hasOne(Loan::class)->where('type', 'HOME');
+        return $this->hasOne(Product::class)->where('type', ProductTypeEnum::HOME_LOAN->value);
     }
 }

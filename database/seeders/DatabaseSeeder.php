@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\Adviser;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Client;
-use App\Models\Loan;
+use App\Models\Product;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
 
@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
     {
         Schema::disableForeignKeyConstraints();
 
-        Loan::truncate();
+        Product::truncate();
         Adviser::truncate();
         Client::truncate();
 

@@ -61,8 +61,8 @@ class Adviser extends Authenticatable
         return Uuid::uuid4()->toString();
     }
 
-    public function loans(): HasMany
+    public function products(): HasMany
     {
-        return $this->hasMany(Loan::class);
+        return $this->hasMany(Product::class);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enum\ProductTypeEnum;
 use App\Models\Adviser;
 use App\Models\Client;
 use Illuminate\Database\Seeder;
@@ -9,10 +10,10 @@ use Illuminate\Support\Collection;
 
 class ClientSeeder extends Seeder
 {
-    private const LOAN_TYPES = [
-        0 => ['CASH'],
-        1 => ['HOME'],
-        2 => ['CASH', 'HOME'],
+    private const PRODUCT_TYPES = [
+        0 => [ProductTypeEnum::CASH_LOAN->value],
+        1 => [ProductTypeEnum::HOME_LOAN->value],
+        2 => [ProductTypeEnum::CASH_LOAN->value, ProductTypeEnum::HOME_LOAN->value],
     ];
     /**
      * Run the database seeds.
@@ -24,7 +25,7 @@ class ClientSeeder extends Seeder
         $advisers = Adviser::all();
         $clients = Client::all();
         foreach ($clients as $client) {
-            $loanTypes = self::LOAN_TYPES[random_int(0, 2)];
+            $loanTypes = self::PRODUCT_TYPES[random_int(0, 2)];
             foreach ($loanTypes as $loanType) {
                 $this->seedLoans(
                     loanType: $loanType,
@@ -36,7 +37,7 @@ class ClientSeeder extends Seeder
     }
 
     /**
-     * Generate {@see Loan} for each {@see Client}
+     * Generate {@see Product} for each {@see Client}
      */
     private function seedLoans(
         string $loanType,
@@ -47,15 +48,15 @@ class ClientSeeder extends Seeder
         $propertyValue = null;
         $downPaymentAmount = null;
 
-        if ($loanType === 'HOME') {
+        if ($loanType === ProductTypeEnum::HOME_LOAN->value) {
             $propertyValue = random_int(100000, 1000000);
             $downPaymentAmount = round($propertyValue / 10);
         }
-        if ($loanType === 'CASH') {
+        if ($loanType === ProductTypeEnum::CASH_LOAN->value) {
             $cashLoanAmount = random_int(1000, 10000);
         }
 
-        $client->loans()->create([
+        $client->products()->create([
             'type' => $loanType,
             'adviser_id' => $advisers->random()->id,
             'property_value' => $propertyValue,

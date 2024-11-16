@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('loans', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('adviser_id')->constrained()->onDelete('cascade');
             $table->foreignUuid('client_id')->constrained()->onDelete('cascade');
-            $table->enum('type', ['CASH', 'HOME']);
+            $table->enum('type', ['CASH_LOAN', 'HOME_LOAN']);
             $table->integer('cash_loan_amount')->nullable();
             $table->integer('property_value')->nullable();
             $table->integer('down_payment_amount')->nullable();
