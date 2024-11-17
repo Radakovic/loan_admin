@@ -4,8 +4,11 @@ namespace App\Service;
 
 use Illuminate\Support\Collection;
 
-class CsvExportService
+class CsvExportService implements CsvExportServiceInterface
 {
+    /**
+     * @inheritDoc
+     */
     public function generateCsv(string $fileName, array $headers, Collection $data): string
     {
         $filePath = storage_path($fileName);

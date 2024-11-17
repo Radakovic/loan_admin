@@ -16,16 +16,24 @@ class Client extends Model
 {
     /** @use HasFactory<ClientFactory> */
     use HasFactory, SoftDeletes, HasUuids;
-
+    /**
+     * The attributes that are mass assignable.
+     * @var array<int, string>
+     */
     protected $fillable = [
         'first_name',
         'last_name',
         'email',
         'phone',
     ];
+    /**
+     * Prevent autoincrement id
+     */
     public $incrementing = false;
+    /**
+     * Id should have to have string (uuid) value
+     */
     protected $keyType = 'string';
-
     /**
      * Here we generate new UUID for model
      */
@@ -33,7 +41,6 @@ class Client extends Model
     {
         return Uuid::uuid4()->toString();
     }
-
     /**
      * Get all {@see Product} for current {@see Client}
      */

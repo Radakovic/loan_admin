@@ -10,18 +10,25 @@ use Illuminate\View\View;
 
 class ClientController extends Controller
 {
+    /**
+     * Show list of all {@see Client}
+     */
     public function index(): View
     {
         $clients = Client::all();
 
         return view('client.index', compact('clients'));
     }
-
+    /**
+     * Show form for creating new {@see Client}
+     */
     public function create(): View
     {
         return view('client.create');
     }
-
+    /**
+     * Create new {@see Client}
+     */
     public function store(StoreClientRequest $request): RedirectResponse
     {
         $validated = $request->validated();
@@ -36,7 +43,9 @@ class ClientController extends Controller
 
         return redirect('/clients');
     }
-
+    /**
+     * Show form for editing {@see Client}
+     */
     public function edit(Client $client): View
     {
         $cashLoan = $client->cashLoanProduct;
@@ -49,14 +58,18 @@ class ClientController extends Controller
             'adviser',
         ]));
     }
-
+    /**
+     * Update personal data of {@see Client}
+     */
     public function update(StoreClientRequest $request, Client $client): RedirectResponse
     {
         $client->update($request->validated());
 
         return redirect('/clients');
     }
-
+    /**
+     * Soft delete {@see Client}
+     */
     public function destroy(Client $client): RedirectResponse
     {
         $client->delete();

@@ -66,13 +66,5 @@ class ClientSeeder extends Seeder
             'down_payment_amount' => $downPaymentAmount,
             'cash_loan_amount' => $cashLoanAmount,
         ]);
-//
-//        $client->products()->create([
-//            'type' => $loanType,
-//            'adviser_id' => $advisers->random()->id,
-//            'property_value' => $propertyValue,
-//            'down_payment_amount' => $downPaymentAmount,
-//            'cash_loan_amount' => $cashLoanAmount,
-//        ]);
     }
 }

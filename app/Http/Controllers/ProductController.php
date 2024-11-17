@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Product\UpsertCashLoanRequest;
 use App\Http\Requests\Product\UpsertHomeLoanRequest;
+use App\Models\Adviser;
 use App\Models\Product;
-use App\Service\CsvExportService;
+use App\Service\CsvExportServiceInterface;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
@@ -13,10 +14,13 @@ use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class ProductController extends Controller
 {
-    public function __construct(private readonly CsvExportService $csvExportService)
+    public function __construct(private readonly CsvExportServiceInterface $csvExportService)
     {
     }
 
+    /**
+     * Shows list of all {@see Product} ordered by date created in descending order
+     */
     public function index(): View
     {
         $products = Auth::user()?->products()->orderBy('created_at', 'DESC')->get();
@@ -24,6 +28,9 @@ class ProductController extends Controller
         return view('product.index', compact('products'));
     }
 
+    /**
+     * Upsert (create or update existing) cash loan {@see Product}
+     */
     public function upsertCashLoan(UpsertCashLoanRequest $request, Product $product): RedirectResponse
     {
         $validated = $request->validated();
@@ -44,6 +51,9 @@ class ProductController extends Controller
         return redirect('/clients');
     }
 
+    /**
+     * Upsert (create or update existing) home loan {@see Product}
+     */
     public function upsertHomeLoan(UpsertHomeLoanRequest $request, Product $product): RedirectResponse
     {
         $validated = $request->validated();
@@ -65,6 +75,9 @@ class ProductController extends Controller
         return redirect('/clients');
     }
 
+    /**
+     * Download CSV file with all {@see Products} of logged in {@see Adviser}
+     */
     public function exportCsv(): BinaryFileResponse
     {
         $products = Auth::user()?->products()->orderBy('created_at', 'DESC')->get();

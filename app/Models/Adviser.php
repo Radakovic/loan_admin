@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Database\Factories\AdviserFactory;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -16,10 +15,8 @@ class Adviser extends Authenticatable
 {
     /** @use HasFactory<AdviserFactory> */
     use HasFactory, Notifiable, HasUuids, SoftDeletes;
-
     /**
      * The attributes that are mass assignable.
-     *
      * @var array<int, string>
      */
     protected $fillable = [
@@ -27,10 +24,8 @@ class Adviser extends Authenticatable
         'email',
         'password',
     ];
-
     /**
      * The attributes that should be hidden for serialization.
-     *
      * @var array<int, string>
      */
     protected $hidden = [
@@ -40,7 +35,6 @@ class Adviser extends Authenticatable
 
     /**
      * Get the attributes that should be cast.
-     *
      * @return array<string, string>
      */
     protected function casts(): array
@@ -50,9 +44,14 @@ class Adviser extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    /**
+     * Prevent autoincrement id
+     */
     public $incrementing = false;
+    /**
+     * Id should have to have string (uuid) value
+     */
     protected $keyType = 'string';
-
     /**
      * Here we generate new UUID for model
      */
@@ -60,7 +59,9 @@ class Adviser extends Authenticatable
     {
         return Uuid::uuid4()->toString();
     }
-
+    /**
+     * Each {@see Adviser} can have many {@see Product}
+     */
     public function products(): HasMany
     {
         return $this->hasMany(Product::class);

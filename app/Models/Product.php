@@ -16,17 +16,24 @@ class Product extends Model
 {
     /** @use HasFactory<ProductFactory> */
     use HasFactory, HasUuids, SoftDeletes;
-
+    /**
+     * The attributes that are mass assignable.
+     * @var array<int, string>
+     */
     protected $fillable = [
         'type',
         'cash_loan_amount',
         'property_value',
         'down_payment_amount',
     ];
-
+    /**
+     * Prevent autoincrement id
+     */
     public $incrementing = false;
+    /**
+     * Id should have to have string (uuid) value
+     */
     protected $keyType = 'string';
-
     /**
      * Here we generate new UUID for model
      */
@@ -34,7 +41,6 @@ class Product extends Model
     {
         return Uuid::uuid4()->toString();
     }
-
     /**
      * Each Loan belongs to one {@see Adviser}
      */
@@ -42,7 +48,6 @@ class Product extends Model
     {
         return $this->belongsTo(Adviser::class);
     }
-
     /**
      * Each loan belongs to one {@see Client}
      */
@@ -50,7 +55,9 @@ class Product extends Model
     {
         return $this->belongsTo(Client::class);
     }
-
+    /**
+     * Virtual field for product value
+     */
     public function getProductValueAttribute(): string
     {
         if ($this->type === ProductTypeEnum::CASH_LOAN->value) {
