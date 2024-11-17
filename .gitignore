@@ -24,3 +24,5 @@ yarn-error.log
 /html-coverage
 clover.xml
 cobertura.xml
+coverage-clover.xml
+junit.xml
