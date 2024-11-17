@@ -36,6 +36,18 @@ class ClientController extends Controller
         return redirect('/clients');
     }
 
+    public function edit(Client $client): View
+    {
+        return view('client.edit', compact('client'));
+    }
+
+    public function update(StoreClientRequest $request, Client $client): RedirectResponse
+    {
+        $client->update($request->validated());
+
+        return redirect('/clients');
+    }
+
     public function destroy(Client $client): RedirectResponse
     {
         $client->delete();
