@@ -27,6 +27,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/products', [ProductController::class, 'index'])->name('products.index');
     Route::get('/products/export', [ProductController::class, 'exportCsv'])->name('products.export');
+    Route::put('/products/cash_loan/{product?}', [ProductController::class, 'upsertCashLoan'])->name('products.updateCashLoan');
+    Route::put('/products/home_loan/{product?}', [ProductController::class, 'upsertHomeLoan'])->name('products.updateHomeLoan');
 });
 
 require __DIR__.'/auth.php';

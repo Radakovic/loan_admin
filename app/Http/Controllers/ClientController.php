@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Client\StoreClientRequest;
 use App\Models\Client;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class ClientController extends Controller
@@ -38,7 +39,15 @@ class ClientController extends Controller
 
     public function edit(Client $client): View
     {
-        return view('client.edit', compact('client'));
+        $cashLoan = $client->cashLoanProduct;
+        $homeLoan = $client->homeLoanProduct;
+        $adviser = Auth::user();
+        return view('client.edit', compact([
+            'client',
+            'cashLoan',
+            'homeLoan',
+            'adviser',
+        ]));
     }
 
     public function update(StoreClientRequest $request, Client $client): RedirectResponse

@@ -19,8 +19,20 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
             <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                <div class="max-w-xl">
+                <div class="max-w-xl mx-auto">
                     @include('client.partials.client-personal-data-form')
+                </div>
+            </div>
+
+            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
+                <div class="max-w-xl mx-auto">
+                    @include('product.partials.upsert-cash-loan-form')
+                </div>
+            </div>
+
+            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
+                <div class="max-w-xl mx-auto">
+                    @include('product.partials.upsert-home-loan-form')
                 </div>
             </div>
         </div>
