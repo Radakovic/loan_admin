@@ -11,15 +11,14 @@ else
     echo "Composer vendor directory already exists and is not empty."
 fi
 
-#    echo "######################################"
-#    echo "Execute migrations ..."
-#    echo "######################################"
-#    php bin/console doctrine:migrations:migrate -n
+    echo "######################################"
+    echo "Execute migrations ..."
+    echo "######################################"
+    php artisan migrate
 
-#    echo "######################################"
-#    echo "Execute fixtures load ..."
-#    echo "######################################"
-#    php bin/console doctrine:fixtures:load -n
+    echo "######################################"
+    echo "Execute fixtures load ..."
+    echo "######################################"
+    php artisan db:seed
 
-# Start PHP-FPM (this replaces the CMD in Dockerfile)
 php-fpm

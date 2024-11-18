@@ -28,11 +28,9 @@ COPY composer.* ./
 
 # Composer install
 RUN composer install --prefer-dist --no-scripts --no-interaction
-# Create var directory
-#RUN	mkdir -p var && chown -R ${USER}:${USER} var
 # Copy the entrypoint script
-#COPY ./.server/docker/entrypoint.sh /usr/local/bin/entrypoint.sh
+COPY ./.server/docker/entrypoint.sh /usr/local/bin/entrypoint.sh
 # Ensure the entrypoint script is executable
-#RUN chmod +x /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
 # Use the entrypoint script
-#ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]

@@ -28,6 +28,15 @@ It is because execution of this command has many stages:
 
 After completing the installation, your application will run on this port: `http://localhost:8082/`
 
+## 💿 Login to app
+
+For login to application you can use any Adviser from database, but you can also use this account:
+
+- email: adviser@example.com
+- password: password
+
+All accounts use same password: `password`
+
 ## ✨ Make commands
 - `make run` run project using docker
 - `make stop` docker down containers
