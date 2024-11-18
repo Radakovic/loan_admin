@@ -1,3 +1,9 @@
+run:
+	@docker compose up
+stop:
+	@docker compose down
+down:
+	@docker compose down --remove-orphans --volumes
 migration:
 	docker compose exec php php artisan migrate
 migration_prev:
