@@ -9,7 +9,7 @@ Technical stack:
 
 ## 💿 Install process
 In your terminal execute command to get source code of project
-`git@github.com:Radakovic/loan_admin.git`
+`git clone git@github.com:Radakovic/loan_admin.git`
 
 This project uses Docker as working container for running application. To continue with installation you have to have installed
 Docker and Docker Compose.
@@ -32,7 +32,7 @@ Next execute this commands in this order:
 - `docker compose exec php php artisan migrate` or `make migration`
 - `docker compose exec php php artisan db:seed` or `make db_seed`
 
-After completing the installation, your application will run on this port: `http://localhost:8082/`
+After completing the installation, your application will run on this port: `http://localhost:8082/login`
 
 ## 💿 Login to app
 
