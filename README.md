@@ -54,6 +54,12 @@ All accounts use same password: `password`
 - `make test` run all PHPUnit tests - paratest
 - `make test_coverage` run tests with coverage - paratest
 
+## ✨ Execute tests
+- `make test` run all PHPUnit tests - paratest
+- `make test_coverage` run tests with coverage - paratest
+
+If you execute tests with coverage it will generate html with data. Path to html: `./html-coverage/index.html`
+
 ## 💡 Database access top secret ;-)
 
 - MYSQL_HOST: 127.0.0.2:3306
