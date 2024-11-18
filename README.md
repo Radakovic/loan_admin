@@ -15,6 +15,7 @@ This project uses Docker as working container for running application. To contin
 Docker and Docker Compose.
 
 After you clone project execute one of fallowing commands needed for start project:
+- `cd loan_admin`
 - `docker compose up`
 - `make run`
 
