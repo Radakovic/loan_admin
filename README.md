@@ -19,12 +19,17 @@ After you clone project execute one of fallowing commands needed for start proje
 - `make run`
 
 Execution of command will last for long time but only for the first time.
-It is because execution of this command has many stages:
+It is because execution of this command has couple stages:
 - Pull all required services
 - Install all required PHP extensions
-- Install all required dependencies
-- Execute all migrations
-- Create fixture data
+
+Next execute this commands in this order:
+
+- `docker compose exec php composer install`
+- `npm install`
+- `npm run build`
+- `docker compose exec php php artisan migrate` or `make migration`
+- `docker compose exec php php artisan db:seed` or `make db_seed`
 
 After completing the installation, your application will run on this port: `http://localhost:8082/`
 

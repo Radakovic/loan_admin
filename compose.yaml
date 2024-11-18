@@ -5,7 +5,6 @@ services:
             dockerfile: ./.server/docker/Dockerfile
         volumes:
             - ./:/app
-            - ./vendor:/app/vendor
         working_dir: /app
         user: 1000:1000
         depends_on:
