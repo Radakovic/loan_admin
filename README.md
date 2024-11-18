@@ -26,6 +26,7 @@ It is because execution of this command has couple stages:
 Next execute this commands in this order:
 
 - `docker compose exec php composer install`
+- `docker compose exec php php artisan env:decrypt`
 - `npm install`
 - `npm run build`
 - `docker compose exec php php artisan migrate` or `make migration`
